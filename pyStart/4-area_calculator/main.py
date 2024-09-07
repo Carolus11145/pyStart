@@ -24,7 +24,17 @@ class Rectangle:
         d = (self.w**2 + self.h**2) ** .5
         return d
     
+    # 5. Create a function that generates a pictorial representation of the shape
+    def display(self):
+        w_line = "*" * self.w
+        h_line = f'\n{w_line}' * self.h
+        pic = w_line + h_line
+        if self.w > 50 or self.h > 50:
+            return "Too big for picture"
+        else:
+            return pic
+        
 quad1 = Rectangle(7, 3)
 quad1.set_h(5)
 quad1.set_w(10)
-print(quad1.diag())
+print(quad1.display())
