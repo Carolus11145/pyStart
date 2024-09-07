@@ -27,7 +27,7 @@ class Rectangle:
     # 5. Create a function that generates a pictorial representation of the shape
     def display(self):
         w_line = "*" * self.w
-        h_line = f"\n{w_line}" * self.h
+        h_line = f"\n{w_line}" * (self.h - 1)
         pic = w_line + h_line
         if self.w > 50 or self.h > 50:
             return "Too big for picture"
@@ -35,7 +35,7 @@ class Rectangle:
             return pic
     # 6. Create a fn which returns the amount of times the given shape could fit into the other
     def get_amount_inside(self, other):
-        pass    
+        pass
         
 class Square(Rectangle): # the square child class of the rectangle class
     # 7. Initialise the square child class with the w and h set to side
