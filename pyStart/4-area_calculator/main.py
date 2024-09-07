@@ -11,6 +11,11 @@ class Rectangle:
         self.w = new_w
         
     # 3. Create a method which calculates the area of the rectangle
+    def area(self):
+        area = self.w * self.h
+        return area
+    
 
 quad1 = Rectangle(7, 3)
-print(quad1.set_h(10))
+quad1.set_h(5)
+print(quad1.area())
