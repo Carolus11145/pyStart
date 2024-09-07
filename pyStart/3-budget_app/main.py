@@ -83,3 +83,6 @@ def gen_spend_chart(categories):
         fin += " \n"
 
     return fin.strip("\n")
+
+food = Category('Food')
+print(food)
