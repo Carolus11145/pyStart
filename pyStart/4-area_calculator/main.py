@@ -27,14 +27,30 @@ class Rectangle:
     # 5. Create a function that generates a pictorial representation of the shape
     def display(self):
         w_line = "*" * self.w
-        h_line = f'\n{w_line}' * self.h
+        h_line = f"\n{w_line}" * self.h
         pic = w_line + h_line
         if self.w > 50 or self.h > 50:
             return "Too big for picture"
         else:
             return pic
+    # 6. Create a fn which returns the amount of times the given shape could fit into the other
+    def get_amount_inside(self, other):
+        pass    
         
+class Square(Rectangle): # the square child class of the rectangle class
+    # 7. Initialise the square child class with the w and h set to side
+    def __init__(self, side):
+        super().__init__(w=side, h=side)
+        self.side = side
+    # 8. Create a variable in square child class that sets side to a new variable
+    def set_side(self, new_side):
+        self.side = new_side
+        return new_side
+    
 quad1 = Rectangle(7, 3)
-quad1.set_h(5)
-quad1.set_w(10)
+quad1.set_h(1)
+quad1.set_w(4)
 print(quad1.display())
+
+quad2 = Square(5)
+print(quad2.display())
