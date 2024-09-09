@@ -32,13 +32,13 @@ class Rectangle:
         if self.w > 50 or self.h > 50:
             return "Too big for picture"
         else:
-            return pic
+            return pic + "\n"
     # 6. Create a fn which returns the amount of times the given shape could fit into the other
     def get_amount_inside(self, other):
        return self.area() // other.area() # the quotient of the tow areas gives us the amount of times the one quad can fit into the other
     # 10. Create a function which generates a string that returns the details of the quadrilateral
     def __str__(self):
-        pass
+        return f'Rectangle(width={self.w}, height={self.h})'
 class Square(Rectangle): # the square child class of the rectangle class
     # 7. Initialise the square child class with the w and h set to side
     def __init__(self, side):
@@ -48,6 +48,8 @@ class Square(Rectangle): # the square child class of the rectangle class
     def set_side(self, new_side):
         self.side = new_side
         return new_side
+    def __str__(self):
+        return f'Square(side={self.side})'
     
 quad1 = Rectangle(7, 3)
 quad1.set_h(1)
@@ -59,4 +61,5 @@ print(quad2.display())
 
 quad1.set_h(8)
 quad1.set_w(16)
-print(quad1.get_amount_inside(quad2))
+print(quad1)
+print(quad2)
