@@ -35,7 +35,7 @@ class Rectangle:
             return pic + "\n"
     # 6. Create a fn which returns the amount of times the given shape could fit into the other
     def get_amount_inside(self, other):
-       return self.area() // other.area() # the quotient of the tow areas gives us the amount of times the one quad can fit into the other
+       return self.area() // other.area() # the quotient of the two areas gives us the amount of times the one quad can fit into the other
     # 10. Create a function which generates a string that returns the details of the quadrilateral
     def __str__(self):
         return f'Rectangle(width={self.w}, height={self.h})'
@@ -47,7 +47,16 @@ class Square(Rectangle): # the square child class of the rectangle class
     # 8. Create a variable in square child class that sets side to a new variable
     def set_side(self, new_side):
         self.side = new_side
-        return new_side
+    def set_w(self, new_side):
+        super().set_w(new_side)
+        self.h = new_side
+        self.w = self.h
+        self.side = self.w
+    def set_h(self, new_side):
+        super().set_h(new_side)
+        self.w = new_side
+        self.h = self.w
+        self.side = self.h
     def __str__(self):
         return f'Square(side={self.side})'
     
@@ -57,7 +66,9 @@ quad1.set_w(4)
 print(quad1.display())
 
 quad2 = Square(4)
-print(quad2.display())
+quad2.set_side(5)
+quad2.set_h(4)
+print(quad2.perimeter())
 
 quad1.set_h(8)
 quad1.set_w(16)
