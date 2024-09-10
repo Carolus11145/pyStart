@@ -45,30 +45,31 @@ class Square(Rectangle): # the square child class of the rectangle class
         super().__init__(w=side, h=side)
         self.side = side
     # 8. Create a variable in square child class that sets side to a new variable
-    def set_side(self, new_side):
-        self.side = new_side
     def set_w(self, new_side):
         super().set_w(new_side)
-        self.h = new_side
-        self.w = self.h
-        self.side = self.w
-    def set_h(self, new_side):
-        super().set_h(new_side)
         self.w = new_side
         self.h = self.w
         self.side = self.h
+    def set_h(self, new_side):
+        super().set_h(new_side)
+        self.h = new_side
+        self.w = self.h
+        self.side = self.w
+    def set_side(self, new_side):
+        self.side = new_side
+        self.w = self.side
+        self.h = self.w
     def __str__(self):
         return f'Square(side={self.side})'
     
 quad1 = Rectangle(7, 3)
 quad1.set_h(1)
 quad1.set_w(4)
-print(quad1.display())
 
 quad2 = Square(4)
-quad2.set_side(5)
-quad2.set_h(4)
+quad2.set_side(7)
 print(quad2.perimeter())
+print(quad2.display())
 
 quad1.set_h(8)
 quad1.set_w(16)
