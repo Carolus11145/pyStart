@@ -29,13 +29,14 @@ def experiment(hat, expected, num_drawn, num_of_experiments):
     for x in range(num_of_experiments):
         copy_of_hat = copy.deepcopy(hat) # 8. Start each call with a new, separate hat instance
         list_of_drawn = copy_of_hat.draw(num_drawn) # 9. List of drawn balls
-        corr = True
+        corr = True # 10. Boolean val to check the correlation of list of drawn balls 
         
         for n, m in expected.items():
+            # 11. Iterate through the key-val pairs to check whether not the corr bool is true
             if list_of_drawn.count(n) < m:
-                m = False
+                corr = False
                 break
-        if m:
+        if corr:
             drawn += 1
 
     return drawn / num_of_experiments
