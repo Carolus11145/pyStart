@@ -30,5 +30,12 @@ def experiment(hat, expected, num_drawn, num_of_experiments):
         copy_of_hat = copy.deepcopy(hat) # 8. Start each call with a new, separate hat instance
         list_of_drawn = copy_of_hat.draw(num_drawn) # 9. List of drawn balls
         m = True
-        for i, j in expected.items():
-            
+        
+        for n, m in expected.items():
+            if list_of_drawn.count(n) < m:
+                m = False
+                break
+        if m:
+            drawn += 1
+
+    return drawn / num_of_experiments
