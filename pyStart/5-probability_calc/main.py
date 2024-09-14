@@ -29,7 +29,7 @@ def experiment(hat, expected, num_drawn, num_of_experiments):
     for x in range(num_of_experiments):
         copy_of_hat = copy.deepcopy(hat) # 8. Start each call with a new, separate hat instance
         list_of_drawn = copy_of_hat.draw(num_drawn) # 9. List of drawn balls
-        m = True
+        corr = True
         
         for n, m in expected.items():
             if list_of_drawn.count(n) < m:
