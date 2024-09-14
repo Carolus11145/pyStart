@@ -22,5 +22,13 @@ class Hat:
         else:
             return self.contents
 
+# 6. Design a function which uses an instance of the class to return a probability
 def experiment(hat, expected, num_drawn, num_of_experiments):
-    pass
+    drawn = 0 # 7. Times that the expected ball is to be drawn
+
+    for x in range(num_of_experiments):
+        copy_of_hat = copy.deepcopy(hat) # 8. Start each call with a new, separate hat instance
+        list_of_drawn = copy_of_hat.draw(num_drawn) # 9. List of drawn balls
+        m = True
+        for i, j in expected.items():
+            
