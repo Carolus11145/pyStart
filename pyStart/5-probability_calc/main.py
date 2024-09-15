@@ -24,7 +24,7 @@ class Hat:
 
 # 6. Design a function which uses an instance of the class to return a probability
 def experiment(hat, expected, num_drawn, num_of_experiments):
-    drawn = 0 # 7. Times that the expected ball is to be drawn
+    draw_count = 0 # 7. Times that the expected ball is to be drawn
 
     for x in range(num_of_experiments):
         copy_of_hat = copy.deepcopy(hat) # 8. Start each call with a new, separate hat instance
@@ -37,6 +37,8 @@ def experiment(hat, expected, num_drawn, num_of_experiments):
                 corr = False
                 break
         if corr:
-            drawn += 1
+            draw_count += 1
 
-    return drawn / num_of_experiments
+    fin = draw_count / num_of_experiments
+
+    return fin
