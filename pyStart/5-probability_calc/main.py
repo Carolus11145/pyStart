@@ -11,17 +11,19 @@ class Hat:
 
     # 2. Define a method for drawing a number of balls
     def draw(self, num):
-        if len(self.contents) >= num:
+        if len(self.contents) <= num:
+            return self.contents
+        elif len(self.content) >= num:
             drawn_items = []
 
             for x in range(num):
+            
                 ball = random.choice(self.contents) # 3. Select a random ball from contents
                 drawn_items.append(ball) # 4. Add random ball to the list of drawn items
                 self.contents.remove(ball) # 5. Finally, remove the ball from the list of drawn contents
+            
             return drawn_items
-        else:
-            return self.contents
-
+        
 # 6. Design a function which uses an instance of the class to return a probability
 def experiment(hat, expected, num_drawn, num_of_experiments):
     draw_count = 0 # 7. Times that the expected ball is to be drawn
