@@ -13,37 +13,36 @@ class Hat:
     # Define a method for drawing a number of balls
     def draw(self, num):
         if len(self.contents) <= num:
-            return self.contents[:]
+            return self.contents
         
         items = list()
 
         for _ in range(0, num):    
-            ball = random.randint(0, len(self.contents) - 1) # Select a random ball from contents
-            items.append(self.contents.pop(ball)) # Add random ball to the list of drawn items
+            ball = self.contents.pop(int(random.random() * len(self.contents))) # Select a random ball from contents
+            items.append(ball) # Add random ball to the list of drawn items
             # Finally, remove the ball from the list of drawn contents
             
         return items
         
 # Design a function which uses an instance of the class to return a probability
 def experiment(hat, expected_balls, num_balls_drawn, num_experiments):
-    origin_hat = copy.copy(hat)
     last_count = 0 # Times that the expected ball is to be drawn
 
     for _ in range(num_experiments):
-        copy_of_hat = copy.deepcopy(origin_hat) # Start each call with a new, separate hat instance
+        copy_of_hat = copy.deepcopy(hat) # Start each call with a new, separate hat instance
+        expected_copy = copy.deepcopy(expected_balls) # make a copy of the expected balls arg
         list_of_drawn = copy_of_hat.draw(num_balls_drawn) # List of drawn balls
-        corr = True # Boolean val to check the correlation of list of drawn balls 
-        
-        for n, m in expected_balls.items():
-            # Iterate through the key-val pairs to check whether not the corr bool is true
-            if list_of_drawn.count(n) < m:
-                corr = False
-                break
-        
-        if corr:
-            last_count += 1
-    # Final return value of the experiment function
-    return last_count / num_experiments
+
+        for x in list_of_drawn: # Iterate through the array of drawn items
+            if (x in expected_copy):
+                expected_copy[x] -= 1 # Decrement index if the el is found
+            
+        if (all(val == 0 for val in expected_copy.values())):
+            last_count += 1 # Increment the final count variable when the above condition is met
+
+    fin = last_count / num_experiments
+
+    return fin
 
 hat1 = Hat(white=4, black=2, yellow=3)
 hat2 = Hat(blue=2, green=5, red=4)
