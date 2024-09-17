@@ -13,7 +13,9 @@ class Hat:
     # Define a method for drawing a number of balls
     def draw(self, num):
         if len(self.contents) <= num:
-            return self.contents[:]
+            contents = copy.deepcopy(self.contents)
+            self.contents.clear()
+            return contents
         
         items = list()
 
