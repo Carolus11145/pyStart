@@ -1,0 +1,1 @@
+This project uses the template code from the freeCodeCamp.org Demographic Data Analyzer project, which must be completed as part of the Data Analysis with Python course.
