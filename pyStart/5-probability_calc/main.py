@@ -13,7 +13,9 @@ class Hat:
     # Define a method for drawing a number of balls
     def draw(self, num):
         if len(self.contents) <= num:
-            return self.contents
+            contents = copy.deepcopy(self.contents)
+            self.contents.clear()
+            return contents
         
         items = list()
 
@@ -26,11 +28,10 @@ class Hat:
         
 # Design a function which uses an instance of the class to return a probability
 def experiment(hat, expected_balls, num_balls_drawn, num_experiments):
-    origin_hat = copy.copy(hat)
     last_count = 0 # Times that the expected ball is to be drawn
 
     for _ in range(num_experiments):
-        copy_of_hat = copy.deepcopy(origin_hat) # Start each call with a new, separate hat instance
+        copy_of_hat = copy.deepcopy(hat) # Start each call with a new, separate hat instance
         list_of_drawn = copy_of_hat.draw(num_balls_drawn) # List of drawn balls
         corr = True # Boolean val to check the correlation of list of drawn balls 
         
