@@ -1,0 +1,1 @@
+The files contained in this directory are the constituents of the mean-variance-standard deviation calculator project of the freeCodeCamp.org Data Analysis with Python course.
