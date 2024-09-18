@@ -1,5 +1,6 @@
 import numpy as np # The calculator must be completed using numpy methods
 
+
 def calculate(arr):
     # Conditional that checks if the list's length is more than nine
     if len(arr) != 9:
