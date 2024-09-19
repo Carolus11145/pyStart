@@ -35,27 +35,30 @@ def draw_cat_plot():
     # Obtain the figure output and store it in the fig variable
     fig = draw_cat.fig
 
-    # 9
+    # These two lines must not be altered, as they are important in the function's performance
     fig.savefig('catplot.png')
     return fig
 
 
-# 10
+# Design the heat map by using the function below
 def draw_heat_map():
-    # 11
-    df_heat = None
+    # Filter out the patient segments in the heat dataframe which contain the incorrect information
+    df_heat = df[(df['ap_lo'] <= df['ap_hi']) & (df['height'] >= df['height'].quantile(0.025)) & (df['height'] <= df['height'].quantile(
+        0.975)) & (df['weight'] >= df['weight'].quantile(0.025)) & (df['weight'] <= df['weight'].quantile(0.975))]
 
-    # 12
-    corr = None
+    # Calculate the correlation matrix of the heat dataframe
+    corr = df_heat.corr()
 
-    # 13
-    mask = None
+    # Use the mask variable to generate and store a mask for the upper triangle
+    mask = np.zeros_like(corr)
+    mask[np.triu_indices_from(mask)] = True
 
-    # 14
-    fig, ax = None
+    # Set up the matplotlib figure
+    fig, ax = plt.subplots(figsize=(11, 9))
 
-    # 15
+    # Using sns.heatmap, plot the correlation matrix of the dataframe
+    ax = sns.heatmap(corr, mask=mask, vmax=.25, fmt='.1f', center=0, square=True, linewidths=.5, cbar_kws={'shrink': .45, 'format': '%.2f'}, vmin=-0.1, annot=True)
 
-    # 16
+    # Do not alter these final lines of code
     fig.savefig('heatmap.png')
     return fig
