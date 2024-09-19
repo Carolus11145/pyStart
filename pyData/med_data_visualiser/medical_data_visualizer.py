@@ -12,9 +12,9 @@ df['overweight'] = (df['weight'] / (df['height'] / 100) **
 
 # Normalise the data in such a way that 0 is always a 'good' outcome and 1 is always a 'bad' outcome
 df['cholesterol'] = df['cholesterol'].apply(
-    lambda x: 0 if x == 0 else 1)  # Normalises the cholesterol data set
+    lambda x: 0 if x == 1 else 1)  # Normalises the cholesterol data set
 # Normalises the glucose data set
-df['gluc'] = df['gluc'].apply(lambda x: 0 if x == 0 else 1)
+df['gluc'] = df['gluc'].apply(lambda x: 0 if x == 1 else 1)
 
 # Design a categorical plot using the function below:
 
