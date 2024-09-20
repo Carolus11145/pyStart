@@ -4,11 +4,12 @@ import seaborn as sns
 from pandas.plotting import register_matplotlib_converters
 register_matplotlib_converters()
 
-# Import data (Make sure to parse dates. Consider setting index column to 'date'.)
-df = None
-
-# Clean data
-df = None
+# Import data and parse dates. Also, set the index to the date column
+df = pd.read_csv('fcc-forum-pageviews.csv')
+df['date'] = pd.to_datetime(df['date'])
+df = df.set_index('date')
+# Filter the data for when the page views are in the top 2.5% or the bottom 2.5%
+df = df[(df['value'] <=)]
 
 
 def draw_line_plot():
