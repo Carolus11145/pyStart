@@ -43,13 +43,15 @@ def draw_bar_plot():
         'Average Page Views': [0, 0, 0, 0]
     }
 
-    df_bar = pd.concat([pd.DataFrame(missing_data)], df_bar)
+    df_bar = pd.concat([pd.DataFrame(missing_data), df_bar])
     # Draw bar plot using matplotlib and seaborn methods
     fig, ax = plt.subplots(figsize=(19.2, 10.8), dpi=100)
     ax.set_title('Daily freeCodeCamp Forum Average Page Views per Month')
 
-    bar_chart = sns.barplot(data=df_bar, x='Years', y='Average Page Views', hue='Months', palette='tab10')
-    bar_chart.set_xticklabels(bar_chart.get_xticklabels(), rotation=90, horizontalalignment='center')
+    bar_chart = sns.barplot(
+        data=df_bar, x='Years', y='Average Page Views', hue='Months', palette='tab10')
+    bar_chart.set_xticklabels(bar_chart.get_xticklabels(
+    ), rotation=90, horizontalalignment='center')
 
     # Save image and return fig
     fig.savefig('bar_plot.png')
@@ -65,20 +67,21 @@ def draw_box_plot():
 
     # Make use of Seaborn methods to create the box plots ->
     fig, axes = plt.subplots(1, 2, figsize=(32, 10), dpi=100)
-    
-    # Our year-wise box plot 
+
+    # Our year-wise box plot
     sns.boxplot(data=df_box, x='year', y='value', ax=axes[0])
     axes[0].set_title('Year-wise Box Plot (Trend)')
     axes[0].set_xlabel('Year')
     axes[0].set_ylabel('Page Views')
 
     # Our month-wise box plot
-    mnths = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+    mnths = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
+             'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
     sns.boxplot(data=df_box, x='month', y='value', order=mnths, ax=axes[1])
     axes[1].set_title('Month-wise Box Plot (Seasonality)')
     axes[1].set_xlabel('Months')
     axes[1].set_ylabel('Page Views')
-    
+
     # Save image and return fig (don't change this part)
     fig.savefig('box_plot.png')
     return fig
